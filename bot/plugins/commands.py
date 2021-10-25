@@ -35,7 +35,7 @@ async def start(bot, update):
                         [
                             InlineKeyboardButton
                                 (
-                                    '🎥Our Channel🎥', url="https://t.me/efcinema"
+                                    '🎥Our Channel🎥', url="https://t.me/efchannel2"
                                 )
                         ]
                     ]
