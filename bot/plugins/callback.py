@@ -81,7 +81,7 @@ async def cb_navg(bot, update: CallbackQuery):
 
     if ((index_val + 1 )== max_pages) or ((index_val + 1) == len(results)): # Max Pages
         temp_results.append([
-            InlineKeyboardButton("⏪ Back", callback_data=f"navigate({index_val}|back|{query})")
+            InlineKeyboardButton("⬅️ Back", callback_data=f"navigate({index_val}|back|{query})")
         ])
 
     elif int(index_val) == 0:
@@ -89,8 +89,8 @@ async def cb_navg(bot, update: CallbackQuery):
 
     else:
         temp_results.append([
-            InlineKeyboardButton("⏪ Back", callback_data=f"navigate({index_val}|back|{query})"),
-            InlineKeyboardButton("Next ⏩️", callback_data=f"navigate({index_val}|next|{query})")
+            InlineKeyboardButton("⬅️ Back", callback_data=f"navigate({index_val}|back|{query})"),
+            InlineKeyboardButton("Next ➡️", callback_data=f"navigate({index_val}|next|{query})")
         ])
 
     if not int(index_val) == 0:    
@@ -142,7 +142,7 @@ async def cb_navg(bot, update: CallbackQuery):
     
     reply_markup = InlineKeyboardMarkup(temp_results)
     
-    text=f"<i>Found</i> <code>{leng}</code> <i>Results For Your Request:</i> <code>{query}</code>"
+    text=f"<i>🗂️Found🗂️</i> <code>{leng}</code> <i>☣️Results For Your Request☣️:</i> <code>{query}</code>"
         
     try:
         await update.message.edit(
@@ -219,7 +219,15 @@ async def cb_settings(bot, update: CallbackQuery):
     reply_markup = InlineKeyboardMarkup(buttons)
 
     await update.message.edit_text(
-        text, 
+        text=f""" 
+👋Hey {message.from_user.mention}
+ഈ സിനിമ ഞങ്ങളുടെ ഡാറ്റാബേസിൽ ഇല്ലെങ്കിൽ നിങ്ങൾക്ക് ഈ സിനിമ ലഭിക്കില്ല
+അല്ലെങ്കിൽ, അഭ്യർത്ഥിച്ച സിനിമയുടെ പേരിന്റെ അക്ഷരവിന്യാസം ശരിയായിരിക്കില്ല ...
+അതിനാൽ നിങ്ങൾ ഗൂഗിളിൽ പോയി നിങ്ങൾക്ക് ആവശ്യമുള്ള സിനിമയുടെ പേരിന്റെ സ്പെല്ലിംഗ് പരിശോധിക്കുക..
+If this movie is not in our database you will not get that movie..
+Otherwise, the spelling of the name of the requested movie may not be correct...
+So you go to google and check the spelling of the name of the movie you want""",
+            parse_mode="html",
         reply_markup=reply_markup, 
         parse_mode="html"
         )
